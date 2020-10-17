@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/idRelativeLayout"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/books2">
+    <TextView
+        android:id="@+id/idTextBottom"
+        style="@style/CaptionStyle"
+        android:textColor="@color/colorPrimary2"
+        android:background="@drawable/text_caption"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/playfair_display"
+        android:text="@string/Sign_caption"
+        android:textSize="17sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-199dp">
+
+        <TextView
+            android:textColor="@color/ButtonsBackCaptionL"
+            style="@style/CaptionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pb_caption"
+            android:textAlignment="center"
+            android:textSize="50sp" />
+
+        <TextView
+            android:textColor="@color/ButtonsBackCaptionL"
+            style="@style/CaptionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pb"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="10dp"
+        android:layout_above="@id/idTextBottom">
+        <Button
+            android:id="@+id/idSignInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_style"
+            android:fontFamily="@font/playfair_display_bold"
+            android:text="@string/SignInName"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/idSignUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@drawable/btn_style"
+            android:fontFamily="@font/playfair_display_bold"
+            android:text="@string/SignUpName"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+</RelativeLayout>

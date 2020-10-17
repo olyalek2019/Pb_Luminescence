@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/cinzel_black</item>
+        <item>@font/cormorant_bold</item>
+        <item>@font/frank_ruhl_libre</item>
+        <item>@font/frank_ruhl_libre_bold</item>
+        <item>@font/gentium_book_basic_bold</item>
+        <item>@font/libre_baskerville</item>
+        <item>@font/libre_baskerville_bold</item>
+        <item>@font/playfair_display</item>
+        <item>@font/playfair_display_black</item>
+        <item>@font/playfair_display_bold</item>
+        <item>@font/playfair_display_sc_bold</item>
+        <item>@font/taviraj_bold</item>
+        <item>@font/taviraj_semibold</item>
+    </array>
+</resources>

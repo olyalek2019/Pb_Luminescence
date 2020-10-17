@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDrawerBack"
+    tools:context=".ui.home.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="17sp"
+                android:layout_marginTop="15sp"
+                android:layout_marginRight="15sp"
+                android:layout_marginBottom="0dp">
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        style="@style/linealWithVertLine"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/spySchoolIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/spySchool"
+                            android:src="@drawable/spy" />
+
+                        <Button
+                            android:id="@+id/idSpySchoolBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/spySchool" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/leaveWorld"
+                            android:src="@drawable/leaveworld" />
+
+                        <Button
+                            android:id="@+id/idLeaveWorldBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="188dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/leaveWorld" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="184dp"
+                    android:layout_height="125dp">
+
+
+                    <LinearLayout
+                        style="@style/linealWithVertLine"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idTimeMercyIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/timeMercy"
+                            android:src="@drawable/mercy" />
+
+
+                        <Button
+                            android:id="@+id/idYimeMercyBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="177dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/timeMercy" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idReturnIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/returnS"
+                            android:src="@drawable/ret" />
+
+                        <Button
+                            android:id="@+id/idReturnBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="194dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/returnS" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        style="@style/linealWithVertLine"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idIsItEveyIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/isItEvery"
+                            android:src="@drawable/isit" />
+
+                        <Button
+                            android:id="@+id/idIsItEveryBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="188dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/isItEvery" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idRageIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/rage"
+                            android:src="@drawable/rage" />
+
+                        <Button
+                            android:id="@+id/idRageBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="194dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/rage" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        style="@style/linealWithVertLine"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idSearchIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/searcher"
+                            android:src="@drawable/search" />
+
+                        <Button
+                            android:id="@+id/idSearchBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/searcher" />
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/linealWithVertLine"
+                        android:orientation="vertical">
+
+                        <View
+                            style="@style/line"
+                            android:layout_marginBottom="10dp" />
+
+                        <ImageView
+                            android:id="@+id/idSolIm"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:contentDescription="@string/solutionAnd"
+                            android:src="@drawable/sol" />
+
+                        <Button
+                            android:id="@+id/idSolutionBtn"
+                            style="@style/contactsStyleCaptions"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/solutionAnd" />
+                        <View
+                            style="@style/line" />
+                    </LinearLayout>
+
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/idSignInTextContacts"
+                style="@style/CaptionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/text_caption"
+                android:fontFamily="@font/playfair_display"
+                android:gravity="bottom"
+                android:text="@string/luminis2020"
+                android:textColor="@color/colorPrimary2"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDrawerBack"
+    tools:context=".ui.gallery.GalleryFragment">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:orientation="vertical">
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idSpellIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/spellbreaker"
+                    android:src="@drawable/spell" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idSpellBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/spellbreaker" />
+
+
+                    <TextView
+                        android:id="@+id/money120"
+                        style="@style/money"
+                        android:text="@string/spell120" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idInvisIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/invisLife"
+                    android:src="@drawable/invis" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idInvisBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/invisLife"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/idInvisTx"
+                        style="@style/money"
+                        android:text="@string/invis230" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idReadyIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/ready"
+                    android:src="@drawable/ready" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idReadyBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/ready" />
+
+                    <TextView
+                        android:id="@+id/idReadyTx"
+                        style="@style/money"
+                        android:text="@string/ready243" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idElsewhereIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/elsewhere"
+                    android:src="@drawable/elsewhere" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idElsewhereBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/elsewhere" />
+
+                    <TextView
+                        android:id="@+id/idElseTx"
+                        style="@style/money"
+                        android:text="@string/else165" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idTimeImg"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/time"
+                    android:src="@drawable/time" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idTimeBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/time" />
+
+                    <TextView
+                        android:id="@+id/idTimeTx"
+                        style="@style/money"
+                        android:text="@string/time97" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idNightImg"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/night"
+                    android:src="@drawable/nighttrain" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idNightBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/night" />
+
+                    <TextView
+                        android:id="@+id/idNightTx"
+                        style="@style/money"
+                        android:text="@string/night311" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idTermIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/terminal"
+                    android:src="@drawable/term" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idTermBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/terminal" />
+
+                    <TextView
+                        android:id="@+id/idTermTx"
+                        style="@style/money"
+                        android:text="@string/term157" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/idForgetIm"
+                    android:layout_width="89dp"
+                    android:layout_height="172dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/forget"
+                    android:src="@drawable/forgett" />
+
+                <LinearLayout
+                    style="@style/LayoutVertical"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/idForgetBtn"
+                        style="@style/contactsStyleCaptions"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/forget" />
+
+                    <TextView
+                        android:id="@+id/idForgetTx"
+                        style="@style/money"
+                        android:text="@string/forget78" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <TextView
+                android:id="@+id/idSignInTextContacts"
+                style="@style/CaptionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/text_caption"
+                android:fontFamily="@font/playfair_display"
+                android:gravity="bottom"
+                android:text="@string/luminis2020"
+                android:textColor="@color/colorPrimary2"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

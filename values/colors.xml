@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A7B971</color>
+    <color name="colorPrimary2">#E0D3C2</color>
+    <color name="colorPrimaryDark">#6C1A0F</color>
+    <color name="colorAccent">#393838</color>
+
+    <color name="colorDrawerBack">#F4F0CB</color>
+
+    <color name="backCaptionColor">#1B130C</color>
+
+    <color name="redColor">#A10B0B</color>
+    <color name="backgroundColorDialog">#F8EDE7</color>
+
+    <color name="ButtonsBackCaptionL">#DFCDB6</color>
+</resources>
+
+
+
