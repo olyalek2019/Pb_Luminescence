@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.example.publishinghouseluminecence.Database.RegUsers;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -63,8 +65,10 @@ public class MainActivity extends AppCompatActivity {
         final View signIn=inflater.inflate(R.layout.sign_in_window, null);
         dialog.setView(signIn);
 
-        final MaterialEditText email = signIn.findViewById(R.id.idEmail);
-        final MaterialEditText password = signIn.findViewById(R.id.idPassword);
+        final TextInputLayout email = signIn.findViewById(R.id.idEmail);
+        final TextInputLayout password = signIn.findViewById(R.id.idPassword);
+        final TextInputLayout phoneNum = signIn.findViewById((R.id.idPhoneNum));
+
 
         dialog.setNegativeButton(R.string.alertDialogNegButton, new DialogInterface.OnClickListener() {
             @Override
@@ -77,36 +81,43 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 final boolean em = Check.checkEmail(email, getApplicationContext(), getResources().getString(R.string.wrongEmailSnackbar));
                 final boolean pass = Check.checkPassNick(password, getApplicationContext(), getResources().getString(R.string.emptlyPassword), getResources().getString(R.string.shortPassSnackbar));
-                if (em && pass){
-                    auth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                boolean phone = Check.signUpPhoneNumVerification(phoneNum, getApplicationContext(), getResources().getString(R.string.wrongFormatPhone));
+                if (em && pass && phone){
+                    auth.signInWithEmailAndPassword(email.getEditText().getText().toString(), password.getEditText().getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                   String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                   DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                                   DatabaseReference uidRef = rootRef.child("Users").child(uid);
-                                   ValueEventListener valueEventListener = new ValueEventListener(){
-                                       @Override
-                                       public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                           Map<String, Object> td = (HashMap<String,Object>) snapshot.getValue();
-                                           String emailString = (String) td.get("email");
+                                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                                    DatabaseReference uidRef = rootRef.child("Users").child(uid);
+                                    ValueEventListener valueEventListener = new ValueEventListener(){
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            Map<String, Object> td = (HashMap<String,Object>) snapshot.getValue();
+                                            String emailString = (String) td.get("email");
                                             String n = (String) td.get("nickName");
-                                            Bundle e = new Bundle();
-                                           e.putString("email", emailString);
-                                           e.putString("key", n);
-                                           Intent i = new Intent(MainActivity.this, MainPageActivity.class);
-                                           i.putExtras(e);
-                                           i.putExtras(e);
-                                           startActivity(i);
-                                           finish();
-                                       }
+                                            String phoneBD = (String) td.get("phoneNum");
+                                            if(phoneBD.equals(phoneNum.getEditText().getText().toString())) {
+                                                Bundle e = new Bundle();
+                                                e.putString("email", emailString);
+                                                e.putString("key", n);
+                                                Intent i = new Intent(MainActivity.this, MainPageActivity.class);
+                                                i.putExtras(e);
+                                                i.putExtras(e);
+                                                startActivity(i);
+                                                finish();
+                                            }
+                                            else{
+                                                ToastAlert.ToastAlert(getApplicationContext(), getResources().getString(R.string.phoneBDphoneEnterdNotMatch));
+                                            }
+                                        }
 
-                                       @Override
-                                       public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                                       }
+                                        }
                                     };
-                                   uidRef.addListenerForSingleValueEvent(valueEventListener);
+                                    uidRef.addListenerForSingleValueEvent(valueEventListener);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -141,10 +152,11 @@ public class MainActivity extends AppCompatActivity {
         View regist_window=inflater.inflate(R.layout.sign_up_window, null);
         dialog.setView(regist_window);
 
-        final MaterialEditText email = regist_window.findViewById(R.id.idEmail);
-        final MaterialEditText password = regist_window.findViewById(R.id.idPassword);
-        final MaterialEditText repPassword = regist_window.findViewById(R.id.idRepPassword);
-        final MaterialEditText nickName = regist_window.findViewById(R.id.idNickName);
+        final TextInputLayout email = regist_window.findViewById(R.id.idEmail);
+        final TextInputLayout password = regist_window.findViewById(R.id.idPassword);
+        final TextInputLayout repPassword = regist_window.findViewById(R.id.idRepPassword);
+        final TextInputLayout nickName = regist_window.findViewById(R.id.idNickName);
+        final TextInputLayout phoneNum = regist_window.findViewById(R.id.idPhoneNum);
 
         dialog.setNegativeButton(R.string.alertDialogNegButton, new DialogInterface.OnClickListener() {
             @Override
@@ -159,24 +171,24 @@ public class MainActivity extends AppCompatActivity {
                 boolean pass=Check.checkPassNick(password, getApplicationContext(), getResources().getString(R.string.emptlyPassword), getResources().getString(R.string.shortPassSnackbar));
                 boolean passRepPass = Check.passRepPassword(password, repPassword, getApplicationContext(), getResources().getString(R.string.passNotEqRepSnackbar));
                 boolean nick = Check.checkPassNick(nickName, getApplicationContext(), getResources().getString(R.string.emptyNick), getResources().getString(R.string.shortNickNameSnackbar));
-                if(em && pass && passRepPass && nick) {
-                    auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                boolean phone = Check.signUpPhoneNumVerification(phoneNum, getApplicationContext(), getResources().getString(R.string.wrongFormatPhone));
+                if(em && pass && passRepPass && nick &&phone) {
+                    auth.createUserWithEmailAndPassword(email.getEditText().getText().toString(), password.getEditText().getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
                                     RegUsers user = new RegUsers();
-                                    user.setEmail(email.getText().toString());
-                                    user.setPassword(password.getText().toString());
-                                    user.setRepPassword(repPassword.getText().toString());
-                                    user.setNickName(nickName.getText().toString());
-
+                                    user.setEmail(email.getEditText().getText().toString());
+                                    user.setPassword(password.getEditText().getText().toString());
+                                    user.setRepPassword(repPassword.getEditText().getText().toString());
+                                    user.setNickName(nickName.getEditText().getText().toString());
+                                    user.setPhoneNum(phoneNum.getEditText().getText().toString());
                                     users_db_ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             ToastAlert.ToastAlert(getApplicationContext(), getResources().getString(R.string.userRegisted));
                                         }
                                     });
-
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -196,5 +208,9 @@ public class MainActivity extends AppCompatActivity {
         cancelBtn.setTextSize(20);
         Button signInBtn = alert.getButton(DialogInterface.BUTTON_POSITIVE);
         signInBtn.setTextSize(20);
+
     }
 }
+/*
+*
+* all books activity вилітає*/
