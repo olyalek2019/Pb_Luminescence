@@ -26,20 +26,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private Button signInBnt, signUpBtn;
     private FirebaseAuth auth;
-    private FirebaseDatabase db;
     private DatabaseReference usersDBRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signInBnt=findViewById(R.id.idSignInBtn);
-        signUpBtn=findViewById(R.id.idSignUpBtn);
+        Button signInBnt = findViewById(R.id.idSignInBtn);
+        Button signUpBtn = findViewById(R.id.idSignUpBtn);
 
         auth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
         usersDBRef = db.getReference("Users");
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {

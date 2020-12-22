@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.santalu.maskedittext.MaskEditText;
-
 public class Check extends ToastAlert{
     public static boolean checkEmail(TextInputLayout text, Context l, String s){
         if(text.getEditText().getText().toString().matches("") || !text.getEditText().getText().toString().contains("@")){

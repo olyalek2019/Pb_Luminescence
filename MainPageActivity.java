@@ -34,7 +34,7 @@ public class MainPageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TextView userName = findViewById(R.id.idUserName);
-        Button startBtn = findViewById(R.id.idStartButton);
+        Button verifyBtn = findViewById(R.id.idStartButton);
 
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
@@ -49,7 +49,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         sendVerificationCode(phoneNum);
 
-        startBtn.setOnClickListener(new View.OnClickListener() {
+        verifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String code = editTextMobile.getText().toString().trim();
