@@ -20,16 +20,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.santalu.maskedittext.MaskEditText;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button signInBnt, signUpBtn;
-    FirebaseAuth auth;
-    FirebaseDatabase db;
-    DatabaseReference users_db_ref;
+    private Button signInBnt, signUpBtn;
+    private FirebaseAuth auth;
+    private FirebaseDatabase db;
+    private DatabaseReference users_db_ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextInputLayout email = signIn.findViewById(R.id.idEmail);
         final TextInputLayout password = signIn.findViewById(R.id.idPassword);
-        final TextInputLayout phoneNum = signIn.findViewById((R.id.idPhoneNum));
-
+        final MaskEditText phoneNum = signIn.findViewById((R.id.idPhoneNum));
 
         dialog.setNegativeButton(R.string.alertDialogNegButton, new DialogInterface.OnClickListener() {
             @Override
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 final boolean em = Check.checkEmail(email, getApplicationContext(), getResources().getString(R.string.wrongEmailSnackbar));
-                final boolean pass = Check.checkPassNick(password, getApplicationContext(), getResources().getString(R.string.emptlyPassword), getResources().getString(R.string.shortPassSnackbar));
+                final boolean pass = Check.checkPass(password, getApplicationContext(), getResources().getString(R.string.passContained), getResources().getString(R.string.emptyPass));
                 boolean phone = Check.signUpPhoneNumVerification(phoneNum, getApplicationContext(), getResources().getString(R.string.wrongFormatPhone));
                 if (em && pass && phone){
                     auth.signInWithEmailAndPassword(email.getEditText().getText().toString(), password.getEditText().getText().toString())
@@ -97,11 +99,13 @@ public class MainActivity extends AppCompatActivity {
                                             String emailString = (String) td.get("email");
                                             String n = (String) td.get("nickName");
                                             String phoneBD = (String) td.get("phoneNum");
-                                            if(phoneBD.equals(phoneNum.getEditText().getText().toString())) {
+                                            if(phoneBD.equals(phoneNum.getRawText())) {
                                                 Bundle e = new Bundle();
                                                 e.putString("email", emailString);
                                                 e.putString("key", n);
+                                                e.putString("phone", phoneBD);
                                                 Intent i = new Intent(MainActivity.this, MainPageActivity.class);
+                                                i.putExtras(e);
                                                 i.putExtras(e);
                                                 i.putExtras(e);
                                                 startActivity(i);
@@ -156,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         final TextInputLayout password = regist_window.findViewById(R.id.idPassword);
         final TextInputLayout repPassword = regist_window.findViewById(R.id.idRepPassword);
         final TextInputLayout nickName = regist_window.findViewById(R.id.idNickName);
-        final TextInputLayout phoneNum = regist_window.findViewById(R.id.idPhoneNum);
+        final MaskEditText phoneNum = regist_window.findViewById(R.id.idPhoneNum);
 
         dialog.setNegativeButton(R.string.alertDialogNegButton, new DialogInterface.OnClickListener() {
             @Override
@@ -167,11 +171,12 @@ public class MainActivity extends AppCompatActivity {
         dialog.setPositiveButton(R.string.alertDialogPosButton, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                Query usersQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("nickName").equalTo(nickName.getEditText().getText().toString());
                 boolean em=Check.checkEmail(email, getApplicationContext(), getResources().getString(R.string.wrongEmailSnackbar));
-                boolean pass=Check.checkPassNick(password, getApplicationContext(), getResources().getString(R.string.emptlyPassword), getResources().getString(R.string.shortPassSnackbar));
-                boolean passRepPass = Check.passRepPassword(password, repPassword, getApplicationContext(), getResources().getString(R.string.passNotEqRepSnackbar));
-                boolean nick = Check.checkPassNick(nickName, getApplicationContext(), getResources().getString(R.string.emptyNick), getResources().getString(R.string.shortNickNameSnackbar));
+                final boolean pass = Check.checkPass(password, getApplicationContext(), getResources().getString(R.string.passContained), getResources().getString(R.string.emptyPass));
+                boolean passRepPass = Check.checkPassRepPassword(password, repPassword, getApplicationContext(), getResources().getString(R.string.passNotEqRepSnackbar));
                 boolean phone = Check.signUpPhoneNumVerification(phoneNum, getApplicationContext(), getResources().getString(R.string.wrongFormatPhone));
+                boolean nick = Check.checkPassNick(nickName, getApplicationContext(), getResources().getString(R.string.emptyNick), getResources().getString(R.string.wrongNickNameSnackbar), usersQuery, getResources().getString(R.string.existedNick));
                 if(em && pass && passRepPass && nick &&phone) {
                     auth.createUserWithEmailAndPassword(email.getEditText().getText().toString(), password.getEditText().getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -180,9 +185,8 @@ public class MainActivity extends AppCompatActivity {
                                     RegUsers user = new RegUsers();
                                     user.setEmail(email.getEditText().getText().toString());
                                     user.setPassword(password.getEditText().getText().toString());
-                                    user.setRepPassword(repPassword.getEditText().getText().toString());
                                     user.setNickName(nickName.getEditText().getText().toString());
-                                    user.setPhoneNum(phoneNum.getEditText().getText().toString());
+                                    user.setPhoneNum(phoneNum.getRawText());
                                     users_db_ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -212,5 +216,4 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 /*
-*
-* all books activity вилітає*/
+* all books activity вилітає (в мене на тф, на pixel 3a всьо ок)*/

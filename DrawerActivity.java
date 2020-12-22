@@ -1,17 +1,8 @@
 package com.example.publishinghouseluminecence;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,14 +10,9 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 public class DrawerActivity extends AppCompatActivity {
 
-    TextView email_text;
-    TextView nick_text;
-    Button spyBookBtn;
     private AppBarConfiguration mAppBarConfiguration;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +22,6 @@ public class DrawerActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
@@ -52,10 +35,12 @@ public class DrawerActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.drawer, menu);
         Bundle b = getIntent().getExtras();
+        assert b != null;
         String email = b.getString("email");
-        String nick = b.getString("nickName");
-        email_text = findViewById(R.id.idEmailNav);
-        nick_text = findViewById(R.id.idNickNav);
+        String nick;
+        nick = b.getString("nickName");
+        TextView email_text = findViewById(R.id.idEmailNav);
+        TextView nick_text = findViewById(R.id.idNickNav);
         email_text.setText(email);
         nick_text.setText(nick);
         return true;
