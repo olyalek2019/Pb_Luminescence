@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import com.example.publishinghouseluminecence.Database.RegUsers;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,9 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.rengwuxian.materialedittext.MaterialEditText;
 import com.santalu.maskedittext.MaskEditText;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button signInBnt, signUpBtn;
     private FirebaseAuth auth;
     private FirebaseDatabase db;
-    private DatabaseReference users_db_ref;
+    private DatabaseReference usersDBRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
-        users_db_ref = db.getReference("Users");
+        usersDBRef = db.getReference("Users");
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,10 +140,6 @@ public class MainActivity extends AppCompatActivity {
         Button signInBtn = alert.getButton(DialogInterface.BUTTON_POSITIVE);
         signInBtn.setTextSize(20);
     }
-
-
-
-
     private void showSignUpWindow() {
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
         dialog.setTitle(R.string.alertDialogCaptionReg);
@@ -187,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                                     user.setPassword(password.getEditText().getText().toString());
                                     user.setNickName(nickName.getEditText().getText().toString());
                                     user.setPhoneNum(phoneNum.getRawText());
-                                    users_db_ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    usersDBRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             ToastAlert.ToastAlert(getApplicationContext(), getResources().getString(R.string.userRegisted));
@@ -215,5 +208,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-/*
-* all books activity вилітає (в мене на тф, на pixel 3a всьо ок)*/

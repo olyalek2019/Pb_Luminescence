@@ -20,8 +20,6 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 public class MainPageActivity extends AppCompatActivity {
-    private TextView userName;
-    private Button startBtn;
     private EditText editTextMobile;
     private String verificationId;
     private FirebaseAuth mAuth;
@@ -35,14 +33,14 @@ public class MainPageActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        userName = findViewById(R.id.idUserName);
-        startBtn = findViewById(R.id.idStartButton);
+        TextView userName = findViewById(R.id.idUserName);
+        Button startBtn = findViewById(R.id.idStartButton);
 
-        Bundle b = getIntent().getExtras();
-        assert b != null;
-        nick = b.getString("key");
-        email_str = b.getString("email");
-        final String phoneNum = b.getString("phone");
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        nick = bundle.getString("key");
+        email_str = bundle.getString("email");
+        final String phoneNum = bundle.getString("phone");
         userName.setText(String.format("Dear %s,", nick));
 
         mAuth = FirebaseAuth.getInstance();
@@ -99,6 +97,7 @@ public class MainPageActivity extends AppCompatActivity {
                 TaskExecutors.MAIN_THREAD,
                 mCallbacks);
     }
+
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {

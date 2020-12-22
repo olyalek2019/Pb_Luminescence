@@ -1,18 +1,11 @@
 package com.example.publishinghouseluminecence;
-
-
-import android.app.DownloadManager;
 import android.content.Context;
-import android.widget.EditText;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.rengwuxian.materialedittext.MaterialEditText;
 import com.santalu.maskedittext.MaskEditText;
 
 public class Check extends ToastAlert{
@@ -62,8 +55,9 @@ public class Check extends ToastAlert{
     public static boolean checkPass(TextInputLayout pass, Context l, String passRegex, String passEmpty){
         if(pass.getEditText().getText().toString().equals("")){
             ToastAlert.ToastAlert(l, passEmpty);
+            return false;
         }
-        if(!pass.getEditText().getText().toString().matches("[a-zA-Z0-9]*")){
+        else if (!pass.getEditText().getText().toString().matches("[a-zA-Z0-9]*")){
             ToastAlert.ToastAlert(l, passRegex);
             return false;
         }
